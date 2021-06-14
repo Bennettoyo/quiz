@@ -12,13 +12,10 @@ namespace quizAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Quiz_Table
+    public partial class Account_Table
     {
         public int ID { get; set; }
-        public string QuizName { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
-        public Nullable<bool> QuizType { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

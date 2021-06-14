@@ -253,8 +253,14 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Account_Table.cs">
+      <DependentUpon>Quiz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CommonModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Questions_Table.cs">
+      <DependentUpon>Quiz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Quiz.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -270,26 +276,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Quiz.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\quizModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>quizModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\quizModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>quizModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\quizModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>quizModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Quiz_Table.cs">
       <DependentUpon>Quiz.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\test_1.cs">
-      <DependentUpon>quizModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -312,16 +300,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Quiz.edmx</DependentUpon>
       <LastGenOutput>Quiz.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\quizModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>quizModel.edmx</DependentUpon>
-      <LastGenOutput>quizModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\quizModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>quizModel.edmx</DependentUpon>
-      <LastGenOutput>quizModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -348,13 +326,6 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\quizModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>quizModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\quizModel.edmx.diagram">
-      <DependentUpon>quizModel.edmx</DependentUpon>
     </Content>
     <EntityDeploy Include="Models\Quiz.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

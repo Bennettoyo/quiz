@@ -12,7 +12,7 @@ namespace quizAPI.Models
     public class quizModel
     {
         public string QuizName { get; set; }
-        public int Status { get; set; }
+        public bool Status { get; set; }
 
 
     }

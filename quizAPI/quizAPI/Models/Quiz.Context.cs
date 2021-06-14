@@ -25,6 +25,8 @@ namespace quizAPI.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Account_Table> Account_Table { get; set; }
+        public virtual DbSet<Questions_Table> Questions_Table { get; set; }
         public virtual DbSet<Quiz_Table> Quiz_Table { get; set; }
     }
 }
