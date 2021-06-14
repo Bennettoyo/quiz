@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jackbenn_BennettoModelStoreContainer" CdmEntityContainer="jackbenn_BennettoEntities">
+    <EntitySetMapping Name="Quiz_Table">
+      <EntityTypeMapping TypeName="jackbenn_BennettoModel.Quiz_Table">
+        <MappingFragment StoreEntitySet="Quiz_Table">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="QuizName" ColumnName="QuizName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

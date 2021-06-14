@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pocketsc_quizDBModelStoreContainer" CdmEntityContainer="pocketsc_quizDBEntities">
+    <EntitySetMapping Name="test_1">
+      <EntityTypeMapping TypeName="pocketsc_quizDBModel.test_1">
+        <MappingFragment StoreEntitySet="test_1">
+          <ScalarProperty Name="Quiz" ColumnName="Quiz" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

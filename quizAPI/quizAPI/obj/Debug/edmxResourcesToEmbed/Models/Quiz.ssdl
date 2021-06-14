@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jackbenn_BennettoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Quiz_Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuizName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityContainer Name="jackbenn_BennettoModelStoreContainer">
+    <EntitySet Name="Quiz_Table" EntityType="Self.Quiz_Table" Schema="jackbenn_Bennetto" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
