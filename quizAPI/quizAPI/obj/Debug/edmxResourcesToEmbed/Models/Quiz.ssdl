@@ -15,10 +15,17 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TableId" Type="int" />
+    <Property Name="Quiz_ID" Type="int" />
+    <Property Name="QuestionNumber" Type="tinyint" />
     <Property Name="QuestionText" Type="nvarchar" MaxLength="250" />
-    <Property Name="MultiSelect" Type="bit" />
-    <Property Name="Answer" Type="nvarchar" MaxLength="30" />
+    <Property Name="FirstAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="SecondAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="ThirdAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="FourthAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsFirstAnswerCorrect" Type="bit" />
+    <Property Name="IsSecondAnswerCorrect" Type="bit" />
+    <Property Name="IsThirdAnswerCorrect" Type="bit" />
+    <Property Name="isFourthAnswerCorrect" Type="bit" />
     <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityType Name="Quiz_Table">
@@ -29,7 +36,7 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
     <Property Name="QuizName" Type="nvarchar" MaxLength="80" />
     <Property Name="Description" Type="nvarchar" MaxLength="250" />
     <Property Name="Image" Type="nvarchar(max)" />
-    <Property Name="QuizType" Type="bit" />
+    <Property Name="QuizType" Type="nvarchar" MaxLength="10" />
     <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityContainer Name="jackbenn_BennettoModelStoreContainer">

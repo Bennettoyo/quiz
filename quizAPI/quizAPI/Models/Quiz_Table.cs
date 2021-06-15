@@ -18,7 +18,7 @@ namespace quizAPI.Models
         public string QuizName { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public Nullable<bool> QuizType { get; set; }
+        public string QuizType { get; set; }
         public Nullable<bool> Status { get; set; }
     }
 }

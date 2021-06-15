@@ -15,10 +15,17 @@ namespace quizAPI.Models
     public partial class Questions_Table
     {
         public int ID { get; set; }
-        public Nullable<int> TableId { get; set; }
+        public Nullable<int> Quiz_ID { get; set; }
+        public Nullable<byte> QuestionNumber { get; set; }
         public string QuestionText { get; set; }
-        public Nullable<bool> MultiSelect { get; set; }
-        public string Answer { get; set; }
+        public string FirstAnswer { get; set; }
+        public string SecondAnswer { get; set; }
+        public string ThirdAnswer { get; set; }
+        public string FourthAnswer { get; set; }
+        public Nullable<bool> IsFirstAnswerCorrect { get; set; }
+        public Nullable<bool> IsSecondAnswerCorrect { get; set; }
+        public Nullable<bool> IsThirdAnswerCorrect { get; set; }
+        public Nullable<bool> isFourthAnswerCorrect { get; set; }
         public Nullable<bool> Status { get; set; }
     }
 }

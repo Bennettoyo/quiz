@@ -10,18 +10,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Questions_Table">
-      <EntityTypeMapping TypeName="jackbenn_BennettoModel.Questions_Table">
-        <MappingFragment StoreEntitySet="Questions_Table">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Answer" ColumnName="Answer" />
-          <ScalarProperty Name="MultiSelect" ColumnName="MultiSelect" />
-          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
-          <ScalarProperty Name="TableId" ColumnName="TableId" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Quiz_Table">
       <EntityTypeMapping TypeName="jackbenn_BennettoModel.Quiz_Table">
         <MappingFragment StoreEntitySet="Quiz_Table">
@@ -30,6 +18,25 @@
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="QuizName" ColumnName="QuizName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions_Table">
+      <EntityTypeMapping TypeName="jackbenn_BennettoModel.Questions_Table">
+        <MappingFragment StoreEntitySet="Questions_Table">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isFourthAnswerCorrect" ColumnName="isFourthAnswerCorrect" />
+          <ScalarProperty Name="IsThirdAnswerCorrect" ColumnName="IsThirdAnswerCorrect" />
+          <ScalarProperty Name="IsSecondAnswerCorrect" ColumnName="IsSecondAnswerCorrect" />
+          <ScalarProperty Name="IsFirstAnswerCorrect" ColumnName="IsFirstAnswerCorrect" />
+          <ScalarProperty Name="FourthAnswer" ColumnName="FourthAnswer" />
+          <ScalarProperty Name="ThirdAnswer" ColumnName="ThirdAnswer" />
+          <ScalarProperty Name="SecondAnswer" ColumnName="SecondAnswer" />
+          <ScalarProperty Name="FirstAnswer" ColumnName="FirstAnswer" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+          <ScalarProperty Name="Quiz_ID" ColumnName="Quiz_ID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

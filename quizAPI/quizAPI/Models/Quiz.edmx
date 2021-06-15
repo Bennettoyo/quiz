@@ -20,10 +20,17 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TableId" Type="int" />
+          <Property Name="Quiz_ID" Type="int" />
+          <Property Name="QuestionNumber" Type="tinyint" />
           <Property Name="QuestionText" Type="nvarchar" MaxLength="250" />
-          <Property Name="MultiSelect" Type="bit" />
-          <Property Name="Answer" Type="nvarchar" MaxLength="30" />
+          <Property Name="FirstAnswer" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecondAnswer" Type="nvarchar" MaxLength="250" />
+          <Property Name="ThirdAnswer" Type="nvarchar" MaxLength="250" />
+          <Property Name="FourthAnswer" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsFirstAnswerCorrect" Type="bit" />
+          <Property Name="IsSecondAnswerCorrect" Type="bit" />
+          <Property Name="IsThirdAnswerCorrect" Type="bit" />
+          <Property Name="isFourthAnswerCorrect" Type="bit" />
           <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Quiz_Table">
@@ -34,7 +41,7 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
           <Property Name="QuizName" Type="nvarchar" MaxLength="80" />
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
           <Property Name="Image" Type="nvarchar(max)" />
-          <Property Name="QuizType" Type="bit" />
+          <Property Name="QuizType" Type="nvarchar" MaxLength="10" />
           <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityContainer Name="jackbenn_BennettoModelStoreContainer">
@@ -54,8 +61,8 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
       <Schema Namespace="jackbenn_BennettoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="jackbenn_BennettoEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Account_Table" EntityType="jackbenn_BennettoModel.Account_Table" />
-          <EntitySet Name="Questions_Table" EntityType="jackbenn_BennettoModel.Questions_Table" />
           <EntitySet Name="Quiz_Table" EntityType="jackbenn_BennettoModel.Quiz_Table" />
+          <EntitySet Name="Questions_Table" EntityType="jackbenn_BennettoModel.Questions_Table" />
         </EntityContainer>
         <EntityType Name="Account_Table">
           <Key>
@@ -65,17 +72,6 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Questions_Table">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TableId" Type="Int32" />
-          <Property Name="QuestionText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="MultiSelect" Type="Boolean" />
-          <Property Name="Answer" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" />
-        </EntityType>
         <EntityType Name="Quiz_Table">
           <Key>
             <PropertyRef Name="ID" />
@@ -84,7 +80,25 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
           <Property Name="QuizName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="QuizType" Type="Boolean" />
+          <Property Name="QuizType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Questions_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quiz_ID" Type="Int32" />
+          <Property Name="QuestionNumber" Type="Byte" />
+          <Property Name="QuestionText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FirstAnswer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecondAnswer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ThirdAnswer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FourthAnswer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsFirstAnswerCorrect" Type="Boolean" />
+          <Property Name="IsSecondAnswerCorrect" Type="Boolean" />
+          <Property Name="IsThirdAnswerCorrect" Type="Boolean" />
+          <Property Name="isFourthAnswerCorrect" Type="Boolean" />
           <Property Name="Status" Type="Boolean" />
         </EntityType>
       </Schema>
@@ -102,18 +116,6 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Questions_Table">
-            <EntityTypeMapping TypeName="jackbenn_BennettoModel.Questions_Table">
-              <MappingFragment StoreEntitySet="Questions_Table">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
-                <ScalarProperty Name="MultiSelect" ColumnName="MultiSelect" />
-                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
-                <ScalarProperty Name="TableId" ColumnName="TableId" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Quiz_Table">
             <EntityTypeMapping TypeName="jackbenn_BennettoModel.Quiz_Table">
               <MappingFragment StoreEntitySet="Quiz_Table">
@@ -122,6 +124,25 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="QuizName" ColumnName="QuizName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions_Table">
+            <EntityTypeMapping TypeName="jackbenn_BennettoModel.Questions_Table">
+              <MappingFragment StoreEntitySet="Questions_Table">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="isFourthAnswerCorrect" ColumnName="isFourthAnswerCorrect" />
+                <ScalarProperty Name="IsThirdAnswerCorrect" ColumnName="IsThirdAnswerCorrect" />
+                <ScalarProperty Name="IsSecondAnswerCorrect" ColumnName="IsSecondAnswerCorrect" />
+                <ScalarProperty Name="IsFirstAnswerCorrect" ColumnName="IsFirstAnswerCorrect" />
+                <ScalarProperty Name="FourthAnswer" ColumnName="FourthAnswer" />
+                <ScalarProperty Name="ThirdAnswer" ColumnName="ThirdAnswer" />
+                <ScalarProperty Name="SecondAnswer" ColumnName="SecondAnswer" />
+                <ScalarProperty Name="FirstAnswer" ColumnName="FirstAnswer" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+                <ScalarProperty Name="Quiz_ID" ColumnName="Quiz_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
