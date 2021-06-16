@@ -22,6 +22,25 @@ namespace quizAPI.Controllers
             return Ok(result);
         }
 
+        [Route("api/quiz/getCompletedQuizzes")]
+        [HttpGet]
+        public IHttpActionResult getCompletedQuizzes()
+        {
+            var results = db.Quiz_Table.Where(d => d.Status == true).ToList();
+            var empty = db.Quiz_Table.Where(d => d.Status == true).ToList();
+            empty.Clear();
+            foreach (var result in results)
+            {
+                var questions = db.Questions_Table.Where(d => d.Quiz_ID == result.ID).ToList();
+                if(questions.Count >= 10)
+                {
+                    empty.Add(result);
+                }
+            }
+            results = empty;
+            return Ok(results);
+        }
+
         [Route("api/quiz/getQuiz")]
         [HttpGet]
         public IHttpActionResult getQuiz(int ID)
@@ -35,6 +54,14 @@ namespace quizAPI.Controllers
         public IHttpActionResult getQuestionData(int QuizId, int questionNumber)
         {
             var result = db.Questions_Table.Where(d => d.Quiz_ID == QuizId && d.QuestionNumber == questionNumber).ToList();
+            return Ok(result);
+        }
+
+        [Route("api/quiz/getAccountDetails")]
+        [HttpGet]
+        public IHttpActionResult getAccountDetails(string Username, string Password)
+        {
+            var result = db.Account_Table.Where(d => d.Username == Username && d.Password == Password).ToList();
             return Ok(result);
         }
 
@@ -65,7 +92,15 @@ namespace quizAPI.Controllers
         {
             try
             {
-                var record = new Questions_Table();
+                var record = db.Questions_Table.FirstOrDefault(d =>  d.Quiz_ID == model.Quiz_ID && d.QuestionNumber == model.QuestionNumber);
+                if(record == null)
+                {
+                    record = new Questions_Table();
+                    Global.isNull = true;
+                } else
+                {
+                    Global.isNull = false;
+                }
                 record.Quiz_ID = model.Quiz_ID;
                 record.QuestionNumber = model.QuestionNumber;
                 record.QuestionText = model.QuestionText;
@@ -78,8 +113,10 @@ namespace quizAPI.Controllers
                 record.IsThirdAnswerCorrect = model.IsThirdAnswerCorrect;
                 record.isFourthAnswerCorrect = model.isFourthAnswerCorrect;
                 record.Status = true;
-
-                db.Questions_Table.Add(record);
+                if (Global.isNull == true)
+                {
+                    db.Questions_Table.Add(record);
+                }
                 db.SaveChanges();
                 return Ok(record.ID);
             }
@@ -136,4 +173,10 @@ namespace quizAPI.Controllers
             catch { return Ok(0); }
         }
     }
+}
+
+class Global
+{
+    public static bool isNull;
+
 }
