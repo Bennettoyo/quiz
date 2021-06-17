@@ -57,6 +57,21 @@ namespace quizAPI.Controllers
             return Ok(result);
         }
 
+
+        [Route("api/quiz/checkIfAnswerCorrect")]
+        [HttpGet]
+        public IHttpActionResult checkIfAnswerCorrect(int QuizId, int QuestionNumber, bool IsFirstAnswerCorrect, bool IsSecondAnswerCorrect, bool IsThirdAnswerCorrect, bool isFourthAnswerCorrect)
+        {
+            var result = db.Questions_Table.Where(d => d.Quiz_ID == QuizId && d.QuestionNumber == QuestionNumber && d.IsFirstAnswerCorrect == IsFirstAnswerCorrect && d.IsSecondAnswerCorrect == IsSecondAnswerCorrect && d.IsThirdAnswerCorrect == IsThirdAnswerCorrect && d.isFourthAnswerCorrect == isFourthAnswerCorrect).ToList();
+            if(result.Count >= 1)
+            {
+                return Ok(1);
+            } else
+            {
+                return Ok(0);
+            }
+        }
+
         [Route("api/quiz/getAccountDetails")]
         [HttpGet]
         public IHttpActionResult getAccountDetails(string Username, string Password)
@@ -72,16 +87,24 @@ namespace quizAPI.Controllers
         {
             try
             {
-                var record = new Quiz_Table();
-                record.QuizName = model.QuizName;
-                record.Description = model.Description;
-                record.Image = model.Image;
-                record.QuizType = model.QuizType;
-                record.Status = model.Status;
+                var existingQuiz = db.Quiz_Table.FirstOrDefault(d => d.QuizName == model.QuizName & d.Status == true);
 
-                db.Quiz_Table.Add(record);
-                db.SaveChanges();
-                return Ok(record.ID);
+                if(existingQuiz == null)
+                {
+                    var record = new Quiz_Table();
+                    record.QuizName = model.QuizName;
+                    record.Description = model.Description;
+                    record.Image = model.Image;
+                    record.QuizType = model.QuizType;
+                    record.Status = model.Status;
+
+                    db.Quiz_Table.Add(record);
+                    db.SaveChanges();
+                    return Ok(record.ID);
+                } else
+                {
+                    return Ok(0);
+                }
             }
             catch { return Ok(0); }
         }
