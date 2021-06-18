@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jackbenn_BennettoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Account_Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Questions_Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quiz_ID" Type="int" />
+    <Property Name="QuestionNumber" Type="tinyint" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="250" />
+    <Property Name="FirstAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="SecondAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="ThirdAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="FourthAnswer" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsFirstAnswerCorrect" Type="bit" />
+    <Property Name="IsSecondAnswerCorrect" Type="bit" />
+    <Property Name="IsThirdAnswerCorrect" Type="bit" />
+    <Property Name="isFourthAnswerCorrect" Type="bit" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Quiz_Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuizName" Type="nvarchar" MaxLength="80" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="QuizType" Type="nvarchar" MaxLength="10" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="jackbenn_BennettoModelStoreContainer">
+    <EntitySet Name="Questions_Table" EntityType="Self.Questions_Table" Schema="jackbenn_Bennetto" store:Type="Tables" />
+    <EntitySet Name="Quiz_Table" EntityType="Self.Quiz_Table" Schema="jackbenn_Bennetto" store:Type="Tables" />
+    <EntitySet Name="Account_Table" EntityType="Self.Account_Table" store:Type="Tables" store:Schema="jackbenn_Bennetto">
+      <DefiningQuery>SELECT 
+    [Account_Table].[ID] AS [ID], 
+    [Account_Table].[Username] AS [Username], 
+    [Account_Table].[Password] AS [Password]
+    FROM [jackbenn_Bennetto].[Account_Table] AS [Account_Table]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
