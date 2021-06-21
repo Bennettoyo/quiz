@@ -14,6 +14,15 @@ namespace quizAPI.Controllers
     {
         jackbenn_BennettoEntities db = new jackbenn_BennettoEntities();
 
+        ///<summary>
+        ///Gets quizzes regardless of status or whether it has enough questions. This is for admins.  
+        ///</summary>
+        ///<remarks>
+        ///
+        ///</remarks>
+        ///<returns>
+        ///Returns result from LINQ.
+        ///</returns> 
         [Route("api/quiz/getQuizzes")]
         [HttpGet]
         public IHttpActionResult getQuizzes()
@@ -22,6 +31,15 @@ namespace quizAPI.Controllers
             return Ok(result);
         }
 
+        ///<summary>
+        ///Gets only the completed quizzes a total question count of 10 
+        ///</summary>
+        ///<remarks>
+        ///Checks to see if status is true, and also that the quizzes have a total of 10 questions.
+        ///</remarks>
+        ///<returns>
+        ///Returns result from LINQ.
+        ///</returns> 
         [Route("api/quiz/getCompletedQuizzes")]
         [HttpGet]
         public IHttpActionResult getCompletedQuizzes()
@@ -41,6 +59,18 @@ namespace quizAPI.Controllers
             return Ok(results);
         }
 
+
+
+        ///<summary>
+        ///Grabs a quiz
+        ///</summary>
+        ///<param ID = "ID" >ID of the quiz.</param>
+        ///<remarks>
+        ///
+        ///</remarks>
+        ///<returns>
+        ///Returns result from LINQ.
+        ///</returns> 
         [Route("api/quiz/getQuiz")]
         [HttpGet]
         public IHttpActionResult getQuiz(int ID)
@@ -49,6 +79,19 @@ namespace quizAPI.Controllers
             return Ok(result);
         }
 
+
+
+        ///<summary>
+        ///Grabs the question data that the user has selected..
+        ///</summary>
+        ///<param QuizId = "QuizId" >Uses the quizId that the user is looking at.</param>
+        ///<param questionNumber = "questionNumber" >Uses the question number as a parameter given by the user.</param>
+        ///<remarks>
+        ///
+        ///</remarks>
+        ///<returns>
+        ///Returns result from LINQ.
+        ///</returns> 
         [Route("api/quiz/getQuestionData")]
         [HttpGet]
         public IHttpActionResult getQuestionData(int QuizId, int questionNumber)
@@ -58,6 +101,22 @@ namespace quizAPI.Controllers
         }
 
 
+
+        ///<summary>
+        ///Checks to see if answer is correct.
+        ///</summary>
+        ///<param QuizId = "QuizId" >ID of the quiz from the answered question.</param>
+        ///<param QuestionNumber = "QuestionNumber" >Question Number of the quiz.</param>
+        ///<param IsFirstAnswerCorrect = "IsFirstAnswerCorrect" >User selected first answer as true.</param>
+        ///<param IsSecondAnswerCorrect = "IsSecondAnswerCorrect" >User selected second answer as true.</param>
+        ///<param IsThirdAnswerCorrect = "IsThirdAnswerCorrect" >User selected third answer as true.</param>
+        ///<param isFourthAnswerCorrect = "isFourthAnswerCorrect" >User selected fourth answer as true.</param>
+        ///<remarks>
+        ///Checks all parameters from the question the student has answererd. 
+        ///</remarks>
+        ///<returns>
+        ///If the LINQ has a count of 1 or more, that means that the answer is correct. Returns 1 if correct, returns 0 if incorrect. 
+        ///</returns> 
         [Route("api/quiz/checkIfAnswerCorrect")]
         [HttpGet]
         public IHttpActionResult checkIfAnswerCorrect(int QuizId, int QuestionNumber, bool IsFirstAnswerCorrect, bool IsSecondAnswerCorrect, bool IsThirdAnswerCorrect, bool isFourthAnswerCorrect)
@@ -72,6 +131,20 @@ namespace quizAPI.Controllers
             }
         }
 
+
+
+
+        ///<summary>
+        ///Checks to see if given credentials are correct. If so, returns result from LINQ.
+        ///</summary>
+        ///<param Username = "Username" >The Username the user has entered.</param>
+        ///<param Password = "Password" >The password the user has entered.</param>
+        ///<remarks>
+        ///
+        ///</remarks>
+        ///<returns>
+        ///Returns result from LINQ.
+        ///</returns> 
         [Route("api/quiz/getAccountDetails")]
         [HttpGet]
         public IHttpActionResult getAccountDetails(string Username, string Password)
@@ -80,7 +153,19 @@ namespace quizAPI.Controllers
             return Ok(result);
         }
 
-        //[Authorize]
+
+
+
+        ///<summary>
+        ///Creates a new question, answer text, and answers which are either true of false.
+        ///</summary>
+        ///<param model = "model" >Uses the quizModel as a parameter.</param>
+        ///<remarks>
+        ///Checks to see if quiz name is live, and if there is a identical quiz name. If so, returns 0. 
+        ///</remarks>
+        ///<returns>
+        ///Returns record ID if succeeded, 0 if failed.
+        ///</returns> 
         [Route("api/quiz/createQuiz")]
         [HttpPost]
         public IHttpActionResult createQuiz(quizModel model)
@@ -109,6 +194,18 @@ namespace quizAPI.Controllers
             catch { return Ok(0); }
         }
 
+
+
+        ///<summary>
+        ///Creates a new question, answer text, and answers which are either true of false.
+        ///</summary>
+        ///<param model = "model" >Uses the questionModel as a parameter.</param>
+        ///<remarks>
+        ///Checks to see if question is already created. If so, edits record, doesn't add record.
+        ///</remarks>
+        ///<returns>
+        ///Returns record ID if succeeded, 0 if failed.
+        ///</returns> 
         [Route("api/quiz/createQuestionAndAnswers")]
         [HttpPost]
         public IHttpActionResult createQuestionAndAnswers(questionModel model)
@@ -146,7 +243,18 @@ namespace quizAPI.Controllers
             catch { return Ok(0); }
         }
 
-        //[Authorize]
+
+
+        ///<summary>
+        ///Edits a specified quiz.
+        ///</summary>
+        ///<param model = "model" >Uses the quizModel as a parameter.</param>
+        ///<remarks>
+        ///
+        ///</remarks>
+        ///<returns>
+        ///Returns 1 if succeeded, 0 if failed.
+        ///</returns> 
         [Route("api/quiz/editQuiz")]
         [HttpPost]
         public IHttpActionResult editQuiz(quizModel model)
@@ -173,7 +281,19 @@ namespace quizAPI.Controllers
             catch { return Ok(0); }
         }
 
-        //[Authorize]
+
+
+
+        ///<summary>
+        ///Deletes a specified quiz.
+        ///</summary>
+        ///<param model = "model" >Uses the quizModel as a parameter.</param>
+        ///<remarks>
+        ///
+        ///</remarks>
+        ///<returns>
+        ///Returns 1 if succeeded, 0 if failed.
+        ///</returns>       
         [Route("api/quiz/DeleteQuiz")]
         [HttpPost]
         public IHttpActionResult DeleteQuiz(quizModel model)

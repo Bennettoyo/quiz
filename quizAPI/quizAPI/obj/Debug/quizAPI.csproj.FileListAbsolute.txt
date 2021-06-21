@@ -184,3 +184,4 @@ C:\Dev\quiz\quizAPI\quizAPI\bin\Microsoft.Owin.Security.Google.xml
 C:\Dev\quiz\quizAPI\quizAPI\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Dev\quiz\quizAPI\quizAPI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Dev\quiz\quizAPI\quizAPI\bin\System.Web.Http.Owin.xml
+C:\Dev\quiz\quizAPI\quizAPI\bin\quizAPI.XML
