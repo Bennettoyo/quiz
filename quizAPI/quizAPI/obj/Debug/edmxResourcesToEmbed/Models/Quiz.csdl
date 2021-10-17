@@ -4,6 +4,8 @@
     <EntitySet Name="Account_Table" EntityType="jackbenn_BennettoModel.Account_Table" />
     <EntitySet Name="Quiz_Table" EntityType="jackbenn_BennettoModel.Quiz_Table" />
     <EntitySet Name="Questions_Table" EntityType="jackbenn_BennettoModel.Questions_Table" />
+    <EntitySet Name="dbo_Shopping_List_Items" EntityType="jackbenn_BennettoModel.dbo_Shopping_List_Items" />
+    <EntitySet Name="dbo_Shopping_Lists" EntityType="jackbenn_BennettoModel.dbo_Shopping_Lists" />
   </EntityContainer>
   <EntityType Name="Account_Table">
     <Key>
@@ -40,6 +42,25 @@
     <Property Name="IsSecondAnswerCorrect" Type="Boolean" />
     <Property Name="IsThirdAnswerCorrect" Type="Boolean" />
     <Property Name="isFourthAnswerCorrect" Type="Boolean" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="dbo_Shopping_List_Items">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShoppingListID" Type="Int32" />
+    <Property Name="itemName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int16" />
+  </EntityType>
+  <EntityType Name="dbo_Shopping_Lists">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="listName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" />
   </EntityType>
 </Schema>

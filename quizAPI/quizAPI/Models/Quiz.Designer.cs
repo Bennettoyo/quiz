@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Dev\quiz\quizAPI\quizAPI\Models\Quiz.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Jack\Documents\Coding\shoppingList-API\quizAPI\quizAPI\Models\Quiz.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -15,6 +15,25 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
           <Property Name="Username" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="dbo_Shopping_List_Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShoppingListID" Type="int" />
+          <Property Name="itemName" Type="nvarchar" MaxLength="40" />
+          <Property Name="Category" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="smallint" />
+        </EntityType>
+        <EntityType Name="dbo_Shopping_Lists">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="listName" Type="nvarchar" MaxLength="40" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
         <EntityType Name="Questions_Table">
           <Key>
             <PropertyRef Name="ID" />
@@ -45,6 +64,8 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
           <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityContainer Name="jackbenn_BennettoModelStoreContainer">
+          <EntitySet Name="dbo_Shopping_List_Items" EntityType="Self.dbo_Shopping_List_Items" Schema="jackbenn_Bennetto" Table="dbo.Shopping_List_Items" store:Type="Tables" />
+          <EntitySet Name="dbo_Shopping_Lists" EntityType="Self.dbo_Shopping_Lists" Schema="jackbenn_Bennetto" Table="dbo.Shopping_Lists" store:Type="Tables" />
           <EntitySet Name="Questions_Table" EntityType="Self.Questions_Table" Schema="jackbenn_Bennetto" store:Type="Tables" />
           <EntitySet Name="Quiz_Table" EntityType="Self.Quiz_Table" Schema="jackbenn_Bennetto" store:Type="Tables" />
           <EntitySet Name="Account_Table" EntityType="Self.Account_Table" store:Type="Tables" store:Schema="jackbenn_Bennetto">
@@ -63,6 +84,8 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
           <EntitySet Name="Account_Table" EntityType="jackbenn_BennettoModel.Account_Table" />
           <EntitySet Name="Quiz_Table" EntityType="jackbenn_BennettoModel.Quiz_Table" />
           <EntitySet Name="Questions_Table" EntityType="jackbenn_BennettoModel.Questions_Table" />
+          <EntitySet Name="dbo_Shopping_List_Items" EntityType="jackbenn_BennettoModel.dbo_Shopping_List_Items" />
+          <EntitySet Name="dbo_Shopping_Lists" EntityType="jackbenn_BennettoModel.dbo_Shopping_Lists" />
         </EntityContainer>
         <EntityType Name="Account_Table">
           <Key>
@@ -99,6 +122,25 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
           <Property Name="IsSecondAnswerCorrect" Type="Boolean" />
           <Property Name="IsThirdAnswerCorrect" Type="Boolean" />
           <Property Name="isFourthAnswerCorrect" Type="Boolean" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="dbo_Shopping_List_Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShoppingListID" Type="Int32" />
+          <Property Name="itemName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int16" />
+        </EntityType>
+        <EntityType Name="dbo_Shopping_Lists">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="listName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
         </EntityType>
       </Schema>
@@ -143,6 +185,27 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
                 <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
                 <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
                 <ScalarProperty Name="Quiz_ID" ColumnName="Quiz_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbo_Shopping_List_Items">
+            <EntityTypeMapping TypeName="jackbenn_BennettoModel.dbo_Shopping_List_Items">
+              <MappingFragment StoreEntitySet="dbo_Shopping_List_Items">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="ShoppingListID" ColumnName="ShoppingListID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbo_Shopping_Lists">
+            <EntityTypeMapping TypeName="jackbenn_BennettoModel.dbo_Shopping_Lists">
+              <MappingFragment StoreEntitySet="dbo_Shopping_Lists">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="listName" ColumnName="listName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -10,6 +10,25 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
     <Property Name="Username" Type="nvarchar" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="dbo_Shopping_List_Items">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShoppingListID" Type="int" />
+    <Property Name="itemName" Type="nvarchar" MaxLength="40" />
+    <Property Name="Category" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="smallint" />
+  </EntityType>
+  <EntityType Name="dbo_Shopping_Lists">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="listName" Type="nvarchar" MaxLength="40" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
   <EntityType Name="Questions_Table">
     <Key>
       <PropertyRef Name="ID" />
@@ -40,6 +59,8 @@ warning 6002: The table/view 'jackbenn_Bennetto.jackbenn_Bennetto.Account_Table'
     <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityContainer Name="jackbenn_BennettoModelStoreContainer">
+    <EntitySet Name="dbo_Shopping_List_Items" EntityType="Self.dbo_Shopping_List_Items" Schema="jackbenn_Bennetto" Table="dbo.Shopping_List_Items" store:Type="Tables" />
+    <EntitySet Name="dbo_Shopping_Lists" EntityType="Self.dbo_Shopping_Lists" Schema="jackbenn_Bennetto" Table="dbo.Shopping_Lists" store:Type="Tables" />
     <EntitySet Name="Questions_Table" EntityType="Self.Questions_Table" Schema="jackbenn_Bennetto" store:Type="Tables" />
     <EntitySet Name="Quiz_Table" EntityType="Self.Quiz_Table" Schema="jackbenn_Bennetto" store:Type="Tables" />
     <EntitySet Name="Account_Table" EntityType="Self.Account_Table" store:Type="Tables" store:Schema="jackbenn_Bennetto">

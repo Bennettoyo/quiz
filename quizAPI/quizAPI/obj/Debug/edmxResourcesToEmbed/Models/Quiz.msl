@@ -41,5 +41,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="dbo_Shopping_List_Items">
+      <EntityTypeMapping TypeName="jackbenn_BennettoModel.dbo_Shopping_List_Items">
+        <MappingFragment StoreEntitySet="dbo_Shopping_List_Items">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+          <ScalarProperty Name="ShoppingListID" ColumnName="ShoppingListID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbo_Shopping_Lists">
+      <EntityTypeMapping TypeName="jackbenn_BennettoModel.dbo_Shopping_Lists">
+        <MappingFragment StoreEntitySet="dbo_Shopping_Lists">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="listName" ColumnName="listName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

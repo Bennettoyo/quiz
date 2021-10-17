@@ -9,6 +9,14 @@ namespace quizAPI.Models
     {
     }
 
+    public class listModel
+    {
+        public int ID { get; set; }
+        public string listName { get; set; }
+        public string UserId { get; set; }
+        public bool Status { get; set; }
+    }
+
     ///<summary>
     ///quizModel refers to quizzes.
     ///</summary>

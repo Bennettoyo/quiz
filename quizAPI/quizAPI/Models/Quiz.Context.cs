@@ -28,5 +28,7 @@ namespace quizAPI.Models
         public virtual DbSet<Account_Table> Account_Table { get; set; }
         public virtual DbSet<Quiz_Table> Quiz_Table { get; set; }
         public virtual DbSet<Questions_Table> Questions_Table { get; set; }
+        public virtual DbSet<dbo_Shopping_List_Items> dbo_Shopping_List_Items { get; set; }
+        public virtual DbSet<dbo_Shopping_Lists> dbo_Shopping_Lists { get; set; }
     }
 }
